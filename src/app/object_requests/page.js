@@ -1,65 +1,84 @@
 import { Table } from "@mui/joy";
 import React from "react";
+import CustomTable from "../components/Table";
+import ObjectCard from "../components/ObjectCard";
 
 export default function Home() {
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+  function createData(
+    report_date,
+    claimer_fullname,
+    claimer_career,
+    claimer_semester,
+    claimer_type,
+    object_name,
+    last_location,
+    claimer_contact,
+    status
+  ) {
+    return {
+      report_date,
+      claimer_fullname,
+      claimer_career,
+      claimer_semester,
+      claimer_type,
+      object_name,
+      last_location,
+      claimer_contact,
+      status,
+    };
   }
-
+  // Fecha del reporte
+  // Nombre del solicitante
+  // Carrera
+  // Semestre
+  // Tipo (docente o alumno)
+  // Objeto encontrado
+  // Visto por utlka vez
+  // Contacto
+  // Estatus
+  // **Posible usar credencial de estudiante**
+  // **Posible implementar mejoras**
   const rows = [
     // Articulo, estatus, ubicacion, fecha del reporte
     createData(
-      "Frozen yoghurt",
-      "Encontrado",
-      "Oficina de Redes",
-      "25/Jan/2022"
+      "05-Jun-2023",
+      "Jorge Rodriguez Flores",
+      "Sistemas Computacionales",
+      "8",
+      "Alumno",
+      "Celular Xiaomi Poco",
+      "Laboratorio de Redes",
+      "6461891906",
+      "Perdido"
     ),
+  ];
+
+  const columns = [
+    { key: "claimer_fullname", name: "Name" },
+    { key: "claimer_career", name: "Carrera" },
+    { key: "claimer_semester", name: "Semestre" },
   ];
 
   for (let index = 0; index < 200; index++) {
     rows.push(
       createData(
-        "Frozen yoghurt",
-        "Encontrado",
-        "Oficina de Redes",
-        "25/Jan/2022"
+        "05-Jun-2022",
+        "Jorge Rodriguez Flores",
+        "Sistemas Computacionales",
+        "8",
+        "Alumno",
+        "Celular Xiaomi Poco",
+        "Laboratorio de Redes",
+        "6461891906",
+        "Perdido"
       )
     );
   }
-
   return (
-    <main className="flex h-screen w-full bg-white rounded-3xl">
-      {/* <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 "></div>
-      <div className="absolute top-20 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 "></div>
-      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 "></div> */}
-
-      <div className="flex h-full items-center justify-center overflow-auto">
-        <Table
-          sx={{
-            "& thead th:nth-child(1)": { width: "40%" },
-            overflow: "auto",
-            height: 200,
-          }}
-        >
-          <thead>
-            <tr>
-              <th>Articulo</th>
-              <th>Estatus</th>
-              <th>Ubicacion</th>
-              <th>Fecha del reporte</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row) => (
-              <tr key={row.name}>
-                <td className="font-extrabold">{row.name}</td>
-                <td>{row.calories}</td>
-                <td>{row.fat}</td>
-                <td>{row.carbs}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+    <main className="flex w-full h-full bg-white">
+      <div className="flex flex-col bg-blue-100 w-full m-14 rounded-2xl shadow-2xl overflow-y-scroll p-5 space-y-5">
+        {/* <CustomTable data={rows} columns={columns}></CustomTable> */}
+        {rows.map(obj => <ObjectCard key={obj.report_date} object={obj}/>)}
       </div>
     </main>
   );

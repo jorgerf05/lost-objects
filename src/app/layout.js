@@ -13,10 +13,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} flex flex-row bg-zinc-800`}>
-        <aside className="flex bg-zinc-800 w-2/6">
+        <aside className="flex bg-zinc-800 w-2/8 h-full">
           <Sidebar />
         </aside>
-        <main className="flex">{children}</main>
+        <main className="flex w-full h-screen">{children}</main>
       </body>
     </html>
   );

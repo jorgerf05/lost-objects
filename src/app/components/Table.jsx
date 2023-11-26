@@ -1,11 +1,11 @@
 // TableComponent.js
 
-import React from 'react';
+import React from "react";
 
-const TableComponent = ({ data, columns }) => {
+const CustomTable = ({ data, columns }) => {
   return (
-    <table className="min-w-full divide-y divide-gray-200">
-      <thead className="bg-gray-50">
+    <table className="divide-y divide-gray-200">
+      <thead className="bg-black">
         <tr>
           {columns.map((column) => (
             <th
@@ -18,14 +18,12 @@ const TableComponent = ({ data, columns }) => {
           ))}
         </tr>
       </thead>
-      <tbody className="bg-white divide-y divide-gray-200">
+
+      <tbody className="divide-y divide-gray-200">
         {data.map((row, rowIndex) => (
           <tr key={rowIndex}>
             {columns.map((column) => (
-              <td
-                key={column.key}
-                className="px-6 py-4 whitespace-nowrap"
-              >
+              <td key={column.key} className="px-6 py-4 whitespace-nowrap text-black">
                 {row[column.key]}
               </td>
             ))}
@@ -36,4 +34,4 @@ const TableComponent = ({ data, columns }) => {
   );
 };
 
-export default TableComponent;
+export default CustomTable;
