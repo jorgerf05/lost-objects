@@ -17,17 +17,17 @@ const ObjectCard = ({ object }) => {
 
   return (
     <div
-      className="flex flex-col h-60 p-8 bg-black rounded-2xl shadow-2xl hover:bg-blue-600 duration-500"
+      className="flex flex-col h-max p-8 bg-white rounded-2xl shadow-xl hover:bg-blue-200 duration-500"
       onClick={() => setexpanded(!expanded)}
     >
       <div className="flex space-x-5 justify-evenly text-xl">
-        <div className="font-bold">{object_name}</div>
-        <div className="">{claimer_fullname}</div>
-        <div className="">{report_date}</div>
+        <div className="font-bold text-black">{object_name}</div>
+        <div className=" text-black">{claimer_fullname}</div>
+        <div className=" text-black">{report_date}</div>
         <div className="text-red-500">{status}</div>
       </div>
       {expanded ? (
-        <div className="bg-green-900 transition-transform rounded-2xl p-4 text-xl">
+        <div className="bg-white transition-transform rounded-2xl p-4 text-xl text-black">
           <div>Carrera: {claimer_career}</div>
           <div>Semestre: {claimer_semester}</div>
           <div>Tipo de personal: {claimer_type}</div>

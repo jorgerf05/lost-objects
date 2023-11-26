@@ -62,7 +62,7 @@ export default function Home() {
   for (let index = 0; index < 200; index++) {
     rows.push(
       createData(
-        "05-Jun-2022",
+        "12 de Junio de 2020",
         "Jorge Rodriguez Flores",
         "Sistemas Computacionales",
         "8",
@@ -75,11 +75,11 @@ export default function Home() {
     );
   }
   return (
-    <main className="flex w-full h-full bg-white">
-      <div className="flex flex-col bg-blue-100 w-full m-14 rounded-2xl shadow-2xl overflow-y-scroll p-5 space-y-5">
-        {/* <CustomTable data={rows} columns={columns}></CustomTable> */}
-        {rows.map(obj => <ObjectCard key={obj.report_date} object={obj}/>)}
-      </div>
+    <main className="bg-gray-200 flex flex-col w-full space-y-5 p-5">
+      <div className="flex text-black text-3xl font-bold mb-5 ml-5">Objetos registrados</div>
+        {rows.map((obj) => (
+          <ObjectCard key={obj.report_date} object={obj} />
+        ))}
     </main>
   );
 }
