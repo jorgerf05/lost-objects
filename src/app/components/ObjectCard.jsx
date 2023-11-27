@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-const ObjectCard = ({ object }) => {
+const ObjectCard = ({ object, setisChanged, router}) => {
   const [expanded, setexpanded] = useState(false);
   const {
     report_date,
@@ -13,7 +13,14 @@ const ObjectCard = ({ object }) => {
     last_location,
     claimer_contact,
     status,
+    id
   } = object;
+
+  const deleteObject = ({id}) => {
+    fetch(`http://localhost:5000/api/giveaway?oid=${id}`)
+    .then((res) => res.json)
+    .then((json) => console.log(json))
+  }
 
   return (
     <div
@@ -34,8 +41,8 @@ const ObjectCard = ({ object }) => {
           <div>Visto por ultima vez: {last_location}</div>
           <div>Contacto: {claimer_contact}</div>
           <div className="flex mt-3 self-center justify-self-center space-x-3 text-xl font-bold">
-            <div className="bg-green-300 p-2 rounded-2xl">Entregar</div>
-            <div className="bg-red-400 p-2 rounded-2xl">Eliminar</div>
+            <button className="bg-green-300 p-2 rounded-2xl">Entregar</button>
+            <button className="bg-red-400 p-2 rounded-2xl" onClick={() => deleteObject({id})}>Eliminar</button>
           </div>
         </div>
       ) : null}
