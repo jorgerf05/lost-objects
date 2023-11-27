@@ -10,7 +10,7 @@ const TopBar = () => {
       <div>
         <Image src={logo.src} alt="Hola" width={100} height={50}color="#0000FF"></Image>
       </div>
-      <div className="flex right-auto">Hoal</div>
+      <div className="flex right-auto"></div>
     </div>
   );
 };

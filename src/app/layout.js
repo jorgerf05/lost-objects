@@ -14,9 +14,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.className} flex flex-col overflow-y-scroll`}
+        className={`${inter.className} flex flex-col overflow-y-scroll bg-gray-200`}
       >
-        <header className="flex h-1/6 sticky top-0 backdrop-blur-xl bg-black/50 rounded-b-2xl mr-5 ml-5">
+        <header className="flex h-1/6 sticky top-0 backdrop-blur-lg bg-black/60 rounded-b-2xl mr-5 ml-5">
           <TopBar></TopBar>
         </header>
         <main className="flex w-full h-full">{children}</main>
