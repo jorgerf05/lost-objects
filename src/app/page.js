@@ -26,14 +26,23 @@ export default function Home() {
   const [isChanged, setisChanged] = useState(false);
   const [filtered, setFiltered] = useState([]);
 
-  const apiUrl = "http://127.0.0.1:5000/api/claims";
+  const apiUrl = "http://10.4.8.58:5000/api/claims";
 
   useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error("Error fetching data:", error));
+    const fetchData = async () => {
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        setData(data)
+        console.log(data)
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    fetchData();
   }, [isChanged]);
+  
 
   return (
     <main className="bg-gray-200 flex flex-col w-full space-y-5 p-5 content-center items-center">

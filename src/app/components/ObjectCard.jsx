@@ -1,26 +1,29 @@
 "use client";
 import React, { useState } from "react";
 
-const ObjectCard = ({ object, setisChanged, router}) => {
+const ObjectCard = ({ object, setisChanged, router }) => {
   const [expanded, setexpanded] = useState(false);
   const {
-    report_date,
-    claimer_fullname,
     claimer_career,
+    claimer_contact,
+    claimer_fullname,
     claimer_semester,
     claimer_type,
-    object_name,
+    como,
+    estas,
+    hola,
+    id,
     last_location,
-    claimer_contact,
-    status,
-    id
+    object_name,
+    report_date,
+    status
   } = object;
 
-  const deleteObject = ({id}) => {
-    fetch(`http://localhost:5000/api/giveaway?oid=${id}`)
-    .then((res) => res.json)
-    .then((json) => console.log(json))
-  }
+  const deleteObject = ({ id }) => {
+    fetch(`http://10.4.8.58:5000/api/giveaway?oid=${id}`)
+      .then((res) => res.json)
+      .then((json) => console.log(json));
+  };
 
   return (
     <div
@@ -31,7 +34,11 @@ const ObjectCard = ({ object, setisChanged, router}) => {
         <div className="font-bold text-black">{object_name}</div>
         <div className=" text-black">{claimer_fullname}</div>
         <div className=" text-black">{report_date}</div>
-        {status === 'Perdido' ? <div className="text-red-500">{status}</div> : <div className="text-green-500">{status}</div>}
+        {como === "Perdido" ? (
+          <div className="text-red-500">{como}</div>
+        ) : (
+          <div className="text-green-500">{como}</div>
+        )}
       </div>
       {expanded ? (
         <div className="flex flex-col bg-white rounded-2xl p-4 text-xl text-black transition-all">
@@ -42,7 +49,12 @@ const ObjectCard = ({ object, setisChanged, router}) => {
           <div>Contacto: {claimer_contact}</div>
           <div className="flex mt-3 self-center justify-self-center space-x-3 text-xl font-bold">
             <button className="bg-green-300 p-2 rounded-2xl">Entregar</button>
-            <button className="bg-red-400 p-2 rounded-2xl" onClick={() => deleteObject({id})}>Eliminar</button>
+            <button
+              className="bg-red-400 p-2 rounded-2xl"
+              onClick={() => deleteObject({ id })}
+            >
+              Eliminar
+            </button>
           </div>
         </div>
       ) : null}

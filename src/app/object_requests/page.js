@@ -28,11 +28,12 @@ export default function Home() {
   
   useEffect(() => {
     // Define the API endpoint
-    const apiUrl = "http://127.0.0.1:5000/api/claims";
+    const apiUrl = "http://10.4.8.58:5000/api/claims";
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => setData(data))
       .catch((error) => console.error("Error fetching data:", error));
+      console.log(data)
   }, []);
 
   return (
